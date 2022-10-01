@@ -35,14 +35,16 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'rest_framework',
     'django_filters',
-    'django_counteries',
+    'django_countries',
     'phonenumber_field',
     'drf_yasg',
     'corsheaders'
 ]
 
 LOCAL_APPS = [
-
+    'core_apps.common',
+    'core_apps.users',
+    'core_apps.profiles'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -88,6 +90,13 @@ WSGI_APPLICATION = 'authors_api.wsgi.application'
 
 DATABASES = {'default': env.db('DATABASE_URL')}
 DATABASES['default']['ATOMIC_REQUESTS'] = True
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': ROOT_DIR / 'db.sqlite3',
+#     }
+# }
 
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.Argon2PasswordHasher',
